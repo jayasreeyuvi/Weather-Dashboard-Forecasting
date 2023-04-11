@@ -22,6 +22,7 @@ function initPage() {
 
         // current weather get request from open weather api//
         let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
+        
         // Axios is a popular JavaScript library used to make HTTP requests.//
         //It is a promise-based library that is easy to use and provides an elegant way to handle errors. //
         //Axios can be used in both the front-end and back-end of web applications.//
