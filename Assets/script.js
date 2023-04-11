@@ -92,7 +92,30 @@ function initPage() {
         });
     }
 
+    //  Get history from local storage //
+    searchEl.addEventListener("click", function () {
+        const searchTerm = cityEl.value;
+        getWeather(searchTerm);
+        searchHistory.push(searchTerm);
+        localStorage.setItem("search", JSON.stringify(searchHistory));
+        SearchHistory();
+    })
 
+    // Clear History button //
+    clearEl.addEventListener("click", function () {
+        localStorage.clear();
+        searchHistory = [];
+        SearchHistory();
+    })
+
+    //You may have noticed above that our data.main.temp was wrapped in a K2F function. That’s because I had already written the function before writing this. I’m no scientist or mathematician so for this I had to google the conversion formula. Once you have that formula you can simply drop it into a function with the call ‘return.’ One thing to remember is the default setting will give you numbers will give you decimal points for days so you may want to put the equation in a Math.floor.//
+    //Since we’re already in math mode we’ll go ahead and build functions to convert Celsius to Fahrenheit and vice versa. Again, a quick google search will give you the formula you need and then you can drop it into a function.//
+    function k2f(K) {
+        return Math.floor((K - 273.15) * 1.8 + 32);
+    }
+
+
+    
 
 
 
