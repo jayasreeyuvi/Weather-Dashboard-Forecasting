@@ -40,6 +40,12 @@ function initPage() {
             currentPicEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
             currentPicEl.setAttribute("alt", response.data.weather[0].description);
 
+
+            //Get 5 day forecast for this city//
+           let cityID = response.data.id;
+           let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + APIKey;
+           axios.get(forecastQueryURL)
+
         })
     }
 
