@@ -1,4 +1,5 @@
 // The purpose of this function is to set up the initial conditions for the exp.htm page.//
+
 function initPage() {
 
     const cityEl = document.getElementById("enter-city");
@@ -114,10 +115,27 @@ function initPage() {
         return Math.floor((K - 273.15) * 1.8 + 32);
     }
 
+    // search history //
+    function SearchHistory() {
 
-    
+        historyEl.innerHTML = "";
+        for (let i = 0; i < searchHistory.length; i++) {
+            const historyItem = document.createElement("input");
+            historyItem.setAttribute("type", "text");
+            historyItem.setAttribute("readonly", true);
+            historyItem.setAttribute("class", "form-control d-block btn btn-outline-info rounded-pill");
+            historyItem.setAttribute("value", searchHistory[i]);
+            historyItem.addEventListener("click", function () {
+                getWeather(historyItem.value);
+            })
+            historyEl.append(historyItem);
+        }
+    }
 
-
+    SearchHistory();
+    if (searchHistory.length > 0) {
+        getWeather(searchHistory[searchHistory.length - 1]);
+    }
 
 
 }
